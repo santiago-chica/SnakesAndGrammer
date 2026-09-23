@@ -18,16 +18,36 @@
   </section>
 
   <section id="game" hidden>
-    <header><h1>Grammar Chaos</h1><strong id="game-label"></strong></header>
+    <header>
+      <h1>Grammar Chaos</h1>
+      <strong id="game-label"></strong>
+    </header>
+
+    <div id="game-over-overlay" class="game-over-overlay hidden">
+      <div class="game-over-card">
+        <h2>🏆 Winner!</h2>
+        <p id="winner-text"></p>
+        <button id="restart-btn" class="hidden">Restart Game</button>
+      </div>
+    </div>
+
+    <div id="controls-row" class="controls-row">
+      <div id="roll-indicator" class="roll-indicator" hidden>🎲 Roll: 0</div>
+      <button id="roll-btn" class="roll-button" disabled>🎲 Roll</button>
+    </div>
+
     <div id="players"></div>
+    <section id="question-panel" hidden>
+      <h3 id="question-text"></h3>
+      <div id="question-options"></div>
+    </section>
     <div id="board"></div>
     <div id="controls">
       <button id="start-btn">Start Game</button>
-      <button id="roll-btn" disabled>🎲 Roll</button>
     </div>
     <section id="chat">
       <div id="chat-messages"></div>
-      <input id="chat-input" maxlength="250" placeholder="Talk shit...">
+      <input id="chat-input" maxlength="250" placeholder="Chat...">
       <button id="chat-send">Send</button>
     </section>
   </section>

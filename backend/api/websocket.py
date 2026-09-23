@@ -13,7 +13,7 @@ async def game_websocket(websocket: WebSocket, game_id: str, player_id: str):
     await websocket.accept()
     game.connect_player(player_id, websocket)
     await websocket.send_json({"type": "game_state", "data": game.public_state()})
-    await game.broadcast({"type": "player_connected", "data": {"player_id": player_id}})
+    await game.broadcast({"type": "game_state", "data": game.public_state()})
 
     try:
         while True:
@@ -21,4 +21,4 @@ async def game_websocket(websocket: WebSocket, game_id: str, player_id: str):
             await game.handle_message(player_id, message)
     except WebSocketDisconnect:
         game.disconnect_player(player_id)
-        await game.broadcast({"type": "player_disconnected", "data": {"player_id": player_id}})
+        await game.broadcast({"type": "game_state", "data": game.public_state()})

@@ -9,6 +9,67 @@ button:disabled { cursor:not-allowed; opacity:.5; }
 #game header { display:flex; justify-content:space-between; align-items:center; }
 #players { display:flex; gap:.5rem; flex-wrap:wrap; margin:1rem 0; }
 .player-card { border:1px solid #444; padding:.5rem; border-radius:6px; }
+.controls-row {
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+  margin:1rem 0;
+}
+.roll-indicator {
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  padding:.75rem 1rem;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.15);
+  background:linear-gradient(135deg, #2d7fff, #8b5cf6, #ec4899);
+  color:#fff;
+  font-weight:700;
+  box-shadow:0 8px 24px rgba(59,130,246,.35);
+}
+.roll-indicator.flash {
+  animation: dice-pop .7s ease;
+}
+.roll-button {
+  min-width:110px;
+}
+@keyframes dice-pop {
+  0% { transform:scale(.9) rotate(-5deg); filter:brightness(1); }
+  35% { transform:scale(1.08) rotate(4deg); filter:brightness(1.35); }
+  100% { transform:scale(1) rotate(0deg); filter:brightness(1); }
+}
+.game-over-overlay {
+  position:fixed;
+  inset:0;
+  display:none;
+  place-items:center;
+  background:rgba(0,0,0,.7);
+  z-index:20;
+}
+.game-over-overlay.visible {
+  display:grid;
+}
+.hidden {
+  display:none !important;
+}
+.game-over-card {
+  width:min(420px, 90vw);
+  padding:2rem;
+  text-align:center;
+  border-radius:18px;
+  background:#1f1f1f;
+  border:1px solid #444;
+  box-shadow:0 20px 50px rgba(0,0,0,.4);
+}
+#question-panel {
+  margin:1rem 0;
+  padding:1rem;
+  border:1px solid #444;
+  border-radius:12px;
+  background:rgba(255,255,255,.02);
+}
+#question-options { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.75rem; }
+#question-options button { flex:1 1 180px; }
 #board { display:grid; grid-template-columns:repeat(10,1fr); gap:3px; margin:1rem 0; }
 .cell { min-height:60px; border:1px solid #444; padding:4px; background:#252525; }
 .player-token { display:inline-block; margin:2px; padding:2px 5px; border-radius:4px; background:#444; }

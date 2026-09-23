@@ -8,6 +8,7 @@ class Board:
     ladder_count: int = 10
     snakes: dict[int, int] = field(default_factory=dict)
     ladders: dict[int, int] = field(default_factory=dict)
+    special_squares: set[int] = field(default_factory=set)
 
     def generate(self, rng: random.Random | None = None) -> None:
         rng = rng or random.Random()
@@ -31,6 +32,18 @@ class Board:
 
         self.snakes = available_pairs(self.snake_count, False)
         self.ladders = available_pairs(self.ladder_count, True)
+
+    def generate_special_squares(self, rng: random.Random | None = None, count: int = 0) -> None:
+        rng = rng or random.Random()
+        self.special_squares.clear()
+        if count <= 0:
+            return
+        candidates = list(range(2, self.size))
+        rng.shuffle(candidates)
+        self.special_squares = set(candidates[:count])
+
+    def is_special_square(self, position: int) -> bool:
+        return position in self.special_squares
 
     def destination(self, position: int) -> tuple[int, str | None]:
         if position in self.snakes:

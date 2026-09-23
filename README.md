@@ -2,22 +2,59 @@
 
 Chaotic multiplayer grammar game: FastAPI + WebSockets + vanilla HTML/CSS/JS.
 
-## Run
+## Super simple run
+
+From the repo root, run one of these:
+
+```powershell
+./start-backend.ps1
+```
+
+```powershell
+./start-frontend.ps1
+```
+
+```powershell
+./start-all.ps1
+```
+
+Then open:
+
+- Local app: http://localhost:5500
+- Local API docs: http://localhost:8000/docs
+
+## ngrok quick tunnel
+
+```powershell
+./start-ngrok.ps1
+```
+
+Then open the frontend with the backend tunnel in the URL, for example:
+
+```text
+http://localhost:5500/?api=https://<your-backend-ngrok-url>
+```
+
+If you want the frontend itself tunneled too, run:
+
+```powershell
+ngrok http 5500
+```
+
+## Manual run
 
 ```powershell
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-uvicorn backend.main:app --reload
+uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-Then serve `frontend/` with a tiny static server (recommended):
+Then serve the frontend:
 
 ```powershell
 python -m http.server 5500 --directory frontend
 ```
-
-Open `http://localhost:5500`.
 
 ## Current foundation
 

@@ -12,6 +12,7 @@ class GameSettings(BaseModel):
     special_square_count: int = Field(15, ge=0, le=100)
     powerup_count: int = Field(8, ge=0, le=100)
     max_powerups: int = Field(2, ge=1, le=2)
+    max_chat_message_length: int = Field(255, ge=0)
     turn_time_limit_seconds: int | None = Field(None, ge=5, le=600)
     question_difficulty: str | None = None
     question_categories: list[str] = Field(default_factory=list)

@@ -8,6 +8,7 @@ class Player:
     position: int = 1
     powerups: list[str] = field(default_factory=list)
     queued_questions: list[str] = field(default_factory=list)
+    pending_question: dict | None = field(default=None, repr=False)
     connected: bool = False
     turn_effects: dict[str, int] = field(default_factory=dict)
 

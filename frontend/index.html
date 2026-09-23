@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>🐍 Snakes & Ladders — Grammar Edition</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="app">
+  <section id="lobby">
+    <h1>🐍 Snakes & Ladders</h1>
+    <h2>Grammar Edition</h2>
+    <input id="username" maxlength="24" placeholder="Username">
+    <input id="game-id" maxlength="6" placeholder="Game ID to join">
+    <div><button id="host-btn">Host Game</button><button id="join-btn">Join Game</button></div>
+    <p id="lobby-status"></p>
+  </section>
+
+  <section id="game" hidden>
+    <header><h1>Grammar Chaos</h1><strong id="game-label"></strong></header>
+    <div id="players"></div>
+    <div id="board"></div>
+    <div id="controls">
+      <button id="start-btn">Start Game</button>
+      <button id="roll-btn" disabled>🎲 Roll</button>
+    </div>
+    <section id="chat">
+      <div id="chat-messages"></div>
+      <input id="chat-input" maxlength="250" placeholder="Talk shit...">
+      <button id="chat-send">Send</button>
+    </section>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

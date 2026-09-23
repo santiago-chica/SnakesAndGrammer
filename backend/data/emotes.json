@@ -1,0 +1,8 @@
+{
+  "emotes": [
+    {"name":"laugh","emoji":"😂","sound":"/sounds/laugh.mp3"},
+    {"name":"bonk","emoji":"🔨","sound":"/sounds/bonk.mp3"},
+    {"name":"scream","emoji":"😱","sound":"/sounds/scream.mp3"},
+    {"name":"victory","emoji":"🏆","sound":"/sounds/victory.mp3"}
+  ]
+}

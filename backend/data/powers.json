@@ -1,0 +1,6 @@
+{
+  "powers": [
+    {"id":"slow","name":"Slow Down","description":"Halves the target's next 3 turns."},
+    {"id":"forced_question","name":"GRAMMAR ATTACK","description":"Queues a grammar question for another player."}
+  ]
+}

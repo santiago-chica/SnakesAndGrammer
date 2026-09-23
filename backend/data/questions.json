@@ -1,0 +1,8 @@
+{
+  "questions": [
+    {"id":"present-simple-001","category":"verb_tenses","difficulty":"A2","question":"She ___ to school every day.","options":[{"text":"go","correct":false},{"text":"goes","correct":true},{"text":"going","correct":false}]},
+    {"id":"articles-001","category":"articles","difficulty":"A2","question":"I saw ___ elephant at the zoo.","options":[{"text":"a","correct":false},{"text":"an","correct":true},{"text":"the","correct":false}]},
+    {"id":"conditionals-001","category":"conditionals","difficulty":"B1","question":"If it rains, we ___ at home.","options":[{"text":"stay","correct":true},{"text":"stayed","correct":false},{"text":"would stayed","correct":false}]},
+    {"id":"prepositions-001","category":"prepositions","difficulty":"B1","question":"She has lived here ___ 2020.","options":[{"text":"for","correct":false},{"text":"since","correct":true},{"text":"during","correct":false}]}
+  ]
+}

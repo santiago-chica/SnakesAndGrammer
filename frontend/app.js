@@ -200,21 +200,32 @@ function showRoll(value, animate = true) {
   }
 }
 
+const COLORS = ["#e5533d","#2f7de1","#8b5cf6","#d6408f","#1c8c74","#c47a12","#0f8fb5","#6b7280"];
+const colorOf = id => COLORS[Math.max(0, gameState.players.findIndex(p => p.id === id)) % COLORS.length];
+
 function renderPlayers() {
   $("players").innerHTML = gameState.players.map(p =>
-    `<div class="player-card">${escapeHtml(p.username)} — ${p.position} ${p.id===gameState.current_player_id ? "🎯" : ""}</div>`
+    `<div class="player-card${p.id===gameState.current_player_id ? " current" : ""}" style="--c:${colorOf(p.id)}"><span class="dot"></span>${escapeHtml(p.username)} <small>casilla ${p.position}</small> ${p.id===gameState.current_player_id ? "🎯" : ""}</div>`
   ).join("");
 }
 
 function renderBoard() {
-  const cells=[];
-  for (let i=1;i<=gameState.settings.board_size;i++) {
-    const tokens=gameState.players.filter(p=>p.position===i).map(p=>`<span class="player-token">${escapeHtml(p.username)}</span>`).join("");
-    const snake=gameState.board.snakes[i] ? ` 🐍→${gameState.board.snakes[i]}` : "";
-    const ladder=gameState.board.ladders[i] ? ` 🪜→${gameState.board.ladders[i]}` : "";
-    cells.push(`<div class="cell"><strong>${i}</strong>${snake}${ladder}<br>${tokens}</div>`);
+  const size = gameState.settings.board_size, cols = 10, rows = Math.ceil(size / cols);
+  const cells = [];
+  for (let r = rows - 1; r >= 0; r--) {
+    const nums = [];
+    for (let c = 0; c < cols; c++) { const n = r * cols + c + 1; if (n <= size) nums.push(n); }
+    if (r % 2 === 1) nums.reverse();
+    nums.forEach(i => {
+      const tokens = gameState.players.filter(p => p.position === i)
+        .map(p => `<span class="player-token" style="--c:${colorOf(p.id)}">${escapeHtml(p.username)}</span>`).join("");
+      const s = gameState.board.snakes[i], l = gameState.board.ladders[i];
+      const jump = s ? `<span class="jump">🐍→${s}</span>` : l ? `<span class="jump">🪜→${l}</span>` : "";
+      const cls = ["cell", (r + i) % 2 ? "alt" : "", s ? "snake" : "", l ? "ladder" : "", i === size ? "goal" : ""].join(" ");
+      cells.push(`<div class="${cls}"><strong>${i}</strong>${jump}<div>${tokens}</div></div>`);
+    });
   }
-  $("board").innerHTML=cells.join("");
+  $("board").innerHTML = cells.join("");
 }
 
 function renderChat() {

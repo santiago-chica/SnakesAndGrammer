@@ -41,7 +41,7 @@ async function request(path, options) {
 async function createGame() {
   try {
     const username = $("username").value.trim();
-    if (username.isEmpty()) {
+    if (username === "") {
       alert("Es necesario poner un nombre");
       return;
     }
@@ -59,7 +59,7 @@ async function createGame() {
 async function joinGame() {
   try {
     const username = $("username").value.trim();
-    if (username.isEmpty()) {
+    if (username === "") {
       alert("Es necesario poner un nombre");
       return;
     }

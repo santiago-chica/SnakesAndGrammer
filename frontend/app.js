@@ -41,6 +41,11 @@ async function request(path, options) {
 async function createGame() {
   try {
     const username = $("username").value.trim();
+    if (username.isEmpty()) {
+      alert("Es necesario poner un nombre");
+      return;
+    }
+
     const game = await request("/api/games", {
       method:"POST", headers:{"Content-Type":"application/json"},
       body:JSON.stringify({username})
@@ -54,6 +59,10 @@ async function createGame() {
 async function joinGame() {
   try {
     const username = $("username").value.trim();
+    if (username.isEmpty()) {
+      alert("Es necesario poner un nombre");
+      return;
+    }
     const gameId = $("game-id").value.trim().toUpperCase();
     const game = await request(`/api/games/${gameId}/join`, {
       method:"POST", headers:{"Content-Type":"application/json"},
